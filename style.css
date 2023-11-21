@@ -17,8 +17,12 @@ body{
 .topnav a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: #8f8f8f;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
+}
+
+.topnav a[aria-label="active"]{
+    color: rgb(242, 242, 242);
+}
