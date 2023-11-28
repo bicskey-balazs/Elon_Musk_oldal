@@ -3,8 +3,7 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
-    border: 1px solid pink;
+    padding: 0;    
 }
 
 body{
@@ -45,15 +44,29 @@ body{
     margin: 5vh 0;
 }
 
+.content-text h1::after{
+    content: '';
+    display: block;
+    width: 50%;
+    height: 2px;
+    background-color: rgb(69, 69, 69);
+    margin: 0 auto;
+}
+
 .content-text p{
     text-align: justify;
     padding: 0 10vw;
     margin: 10px 0;
+    font-size: 16px;
 }
 
 .content-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0 10vw;
-    height: 500px;
 }
 
-.content-image img{ height: inherit; }
+.content-image img{ 
+    height: 90%; 
+}
