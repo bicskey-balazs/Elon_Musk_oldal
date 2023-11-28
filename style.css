@@ -13,6 +13,20 @@ body{
     overflow-x: hidden;
     min-height: 100%;
     position: relative;
+    cursor: none;
+}
+
+.rounded{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease-out;
+    pointer-events: none;
 }
 
 .topnav {
