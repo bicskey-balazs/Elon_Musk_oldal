@@ -72,3 +72,26 @@ body{
 .content-image img{ 
     height: 90%; 
 }
+
+.ctestGrid{
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.ctestSquare {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+}
+
+.ctestSzam {
+    background-color: skyblue;
+    text-align: center;
+}
