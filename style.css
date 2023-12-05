@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 
+:root{
+    --underline-width: 0%;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -13,19 +17,21 @@ body{
     overflow-x: hidden;
     min-height: 100%;
     position: relative;
+}
+
+.hidden-cursor, .hidden-cursor:hover, .hidden-cursor:active, .hidden-cursor:focus{
     cursor: none;
 }
 
-.rounded{
-    width: 20px;
-    height: 20px;
-    border: 2px solid #fff;
-    border-radius: 10% 50% 50% 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 0.1s ease-out;
-    pointer-events: none;
+a::after{
+    content: '';
+    display: block;
+    width: 0%;
+    width: var(--underline-width);
+    height: 2px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: width 0.2s ease-in-out;
 }
 
 .topnav {
