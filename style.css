@@ -17,21 +17,9 @@ body{
     overflow-x: hidden;
     min-height: 100%;
     position: relative;
-    cursor: none;
 }
 
-.cursor{
-    width: 20px;
-    height: 20px;
-    border: 2px solid #fff;
-    border-radius: 10% 50% 50% 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-}
-
-a, a:hover, a:visited, a:active{
+.hidden-cursor, .hidden-cursor:hover, .hidden-cursor:active, .hidden-cursor:focus{
     cursor: none;
 }
 
