@@ -1,4 +1,4 @@
-const cursorRounded = document.querySelector('.rounded');
+const cursorRounded = document.querySelector('.cursor');
 
 var lastX;
 var lastY;
