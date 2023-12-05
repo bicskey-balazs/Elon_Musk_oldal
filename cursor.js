@@ -6,7 +6,6 @@ var lastY;
 cursorHideElements = ["body", "a"];
 
 const moveCursor = (e) => {
-    
     if (e.clientX != undefined) lastX = e.clientX;
     if (e.clientY != undefined) lastY = e.clientY;
 
@@ -15,6 +14,8 @@ const moveCursor = (e) => {
     
     cursor.style.top = mouseY + 'px';
     cursor.style.left = mouseX + 'px';
+
+    cursor.style.display = 'block';
 }
 
 onload = () => {
@@ -27,6 +28,8 @@ onload = () => {
     cursor.style.top = '0';
     cursor.style.left = '0';
     cursor.style.pointerEvents = 'none';
+    cursor.style.display = 'none';
+
     cursor.id = 'cursor';
     document.body.appendChild(cursor);
 
@@ -35,8 +38,8 @@ onload = () => {
             document.querySelectorAll(cursorHideElements[i])[j].classList.add("hidden-cursor");
         }
     }
-
 };
 
 window.addEventListener('mousemove', moveCursor);
 window.addEventListener('scroll', moveCursor);
+
