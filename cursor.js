@@ -22,7 +22,7 @@ onload = () => {
     cursor = document.createElement('div');
     cursor.style.width = '20px';
     cursor.style.height = '20px';
-    cursor.style.border = '2px solid #fff';
+    cursor.style.border = '4px solid white';
     cursor.style.borderRadius = '10% 50% 50% 50%';
     cursor.style.position = 'absolute';
     cursor.style.top = '0';
