@@ -126,3 +126,7 @@ a::after{
     background-color: skyblue;
     text-align: center;
 }
+
+.pontSzam {
+    text-align: center;
+}

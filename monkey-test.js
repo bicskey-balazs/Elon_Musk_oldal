@@ -4,6 +4,7 @@ let squareIndex = 0;
 let szamDb = 3;
 let melyikSzam = 1;
 let szamLista = [];
+let pontSzam = 0
 
 function kivalaszt() {
     for(let i = 0; i < szamDb; i++) {
@@ -12,21 +13,28 @@ function kivalaszt() {
     }
 }
 
+function general() {
+    kivalaszt();
 
-kivalaszt();
-
-while(squareIndex < 40) {
-    let square = document.createElement('div');
-    square.classList.add('ctestSquare');
-    square.id = `s${squareIndex}`;
-    ctestGrid.appendChild(square);
-    
-    szamLista.forEach(szam => {
-        if(szam == squareIndex) {
-            square.innerHTML = melyikSzam;
-            square.classList.add('ctestSzam');
-            melyikSzam++;
-        }
-    });
-    squareIndex++;
+    while(squareIndex < 40) {
+        let square = document.createElement('div');
+        square.classList.add('ctestSquare');
+        square.id = `s${squareIndex}`;
+        ctestGrid.appendChild(square);
+        
+        szamLista.forEach(szam => {
+            if(szam == squareIndex) {
+                square.innerHTML = melyikSzam;
+                square.classList.add('ctestSzam');
+                square.addEventListener("mouseup", () => {
+                    pontSzam++;
+                    document.querySelector('.pontSzam').textContent = pontSzam;
+                });
+                melyikSzam++;
+            }
+        });
+        squareIndex++;
+    }
 }
+
+general();
