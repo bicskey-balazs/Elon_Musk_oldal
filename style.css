@@ -142,3 +142,17 @@ a::after{
 .pontSzam {
     text-align: center;
 }
+
+.startGame{
+    text-align: center;
+    padding: 15px;
+    height: 50px;
+    background-color: #8f8f8f;
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+.lathatatlan{
+    background-color: #212121;
+}
