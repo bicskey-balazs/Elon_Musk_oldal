@@ -28,7 +28,7 @@ function general() {
                 square.classList.add('ctestSzam');
                 square.addEventListener("mouseup", () => {
                     pontSzam++;
-                    document.querySelector('.pontSzam').innerHTML = pontSzam;
+                    document.querySelector('.pontSzam').textContent = pontSzam;
                 });
                 melyikSzam++;
             }
