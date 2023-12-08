@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="cursor.js" defer></script>
-    <script src="script.js" defer></script>
+    <script></script>
     <title>Tesla</title>
 </head>
 <body>
@@ -20,17 +19,52 @@
     </div>
 
     <ul class="quickNav">
-        <li aria-label="selected">Model S</li>
-        <li>Model 3</li>
-        <li>Model X</li>
-        <li>Model Y</li>
+        <li aria-label="selected">
+            <a href="#S">
+                Model S
+            </a>
+        </li>
+        <li>
+            <a href="#3">
+                Model 3
+            </a>
+        </li>
+        <li>
+            <a href="#X">
+                Model X
+            </a>
+        </li>
+        <li>
+            <a href="#Y">
+                Model Y
+            </a>
+        </li>
     </ul> 
+
+    <div class="cnt">
+        <div id="S" style="height: 10000px;">
+
+        </div>
+        <div id="3" style="height: 10000px;">
+
+        </div>
+        <div id="X" style="height: 10000px;">
+
+        </div>
+        <div id="Y" style="height: 10000px;">
+
+        </div>
+    </div>
 </body>
 </html>
 
 <style>
+    html{
+        scroll-behavior: smooth;
+    }
+    
     .quickNav{
-        position: absolute;
+        position: fixed;
         top:50%;
         left:0;
         transform: translate("-50% -50%");
@@ -41,10 +75,43 @@
 
     .quickNav li{
         color: rgb(111, 111, 111);
+        font-size: 1em;
+        transition: all .2s ease-in-out;
+        margin-bottom: 4px;
     }
 
     .quickNav li[aria-label="selected"]{
-        color: rgb(231, 231, 231);
+        color: rgb(244, 244, 244);
+        font-size: 1.2em;
+    }
+
+    .quickNav li:hover{
+        color: rgb(244, 244, 244);
+        padding-left: 5px;
+    }
+
+    .quickNav a{
+        color: inherit;
+        text-decoration: none;
     }
 </style>
 
+<script>
+    const contentChild = document.querySelectorAll(".cnt div");
+    const navElements = document.querySelectorAll(".quickNav li");
+
+    addEventListener("scroll", (e)=>{
+        for(let i = 0; i < contentChild.length; i++){
+            var height = contentChild[i].style.height
+            height = Number(height.split("p")[0]);
+            var scroll = window.scrollY;
+
+            var current = Math.floor(scroll/height);
+
+            for(let j = 0; j < navElements.length; j++){  
+                if (j == current) navElements[j].setAttribute("aria-label", "selected");
+                else navElements[j].removeAttribute("aria-label");
+            }
+        }
+    });
+</script>
