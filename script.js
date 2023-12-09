@@ -1,5 +1,5 @@
 function UnderLineSetup(){
-    var links = document.querySelectorAll('a');
+    var links = document.querySelectorAll('.topnav a');
 
     for (var i = 0; i < links.length; i++) {
         links[i].addEventListener('mouseenter', function() {

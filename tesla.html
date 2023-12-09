@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <script></script>
+    <script src="script.js" defer></script>
     <title>Tesla</title>
 </head>
 <body>
@@ -20,22 +20,22 @@
 
     <ul class="quickNav">
         <li aria-label="selected">
-            <a href="#S">
+            <a href="#S" class="noselect">
                 Model S
             </a>
         </li>
         <li>
-            <a href="#3">
+            <a href="#3" class="noselect">
                 Model 3
             </a>
         </li>
         <li>
-            <a href="#X">
+            <a href="#X" class="noselect">
                 Model X
             </a>
         </li>
         <li>
-            <a href="#Y">
+            <a href="#Y" class="noselect">
                 Model Y
             </a>
         </li>
@@ -44,17 +44,19 @@
     <div class="cnt">
         <div id="S">
             <h1>Tesla Model S</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus distinctio deserunt corporis consequatur culpa, accusantium vel laudantium quis illo, aliquam consectetur provident inventore a eos! Ad natus tempore quas inventore.</p>
-
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
         </div>
-        <div id="3" style="height: 10000px;">
-
+        <div id="3">
+            <h1>Tesla Model 3</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
         </div>
-        <div id="X" style="height: 10000px;">
-
+        <div id="X">
+            <h1>Tesla Model X</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
         </div>
-        <div id="Y" style="height: 10000px;">
-
+        <div id="Y">
+            <h1>Tesla Model Y</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
         </div>
     </div>
 </body>
@@ -96,16 +98,22 @@
         color: inherit;
         text-decoration: none;
     }
+
+    .cnt div{
+        height: 100vh;
+        text-align: center;
+        padding-top: 50px;
+    }
+    
 </style>
 
-<script>
+<script defer>
     const contentChild = document.querySelectorAll(".cnt div");
     const navElements = document.querySelectorAll(".quickNav li");
 
     addEventListener("scroll", (e)=>{
         for(let i = 0; i < contentChild.length; i++){
-            var height = contentChild[i].style.height
-            height = Number(height.split("p")[0]);
+            var height = contentChild[i].offsetHeight;
             var scroll = window.scrollY;
 
             var current = Math.floor(scroll/height);
