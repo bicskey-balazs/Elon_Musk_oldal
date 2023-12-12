@@ -190,7 +190,7 @@
     }
 
 
-    function RotateTesla(cursorX, handle){
+    function RotateTesla(cursorX, handle, model){
         var midHandle = handle.offsetWidth/2;
         var newPos = (cursorX - handle.parentElement.offsetLeft - midHandle);
         var picNum = 50;
@@ -205,5 +205,8 @@
         handle.style.left = snappedPos + "px";
         handle.parentElement.previousElementSibling.src = "képek/ModelS/letöltés (" + currentPic + ").png";
     }
+
+    quickNav();
+    Rotate360();
 
 </script>
