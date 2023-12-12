@@ -42,29 +42,24 @@
     </ul> 
 
     <div class="cnt">
-        <div id="S">
+        <div id="S" class="car">
             <h1>Tesla Model S</h1>
-            <div class="360view">
-                <img src="képek/ModelS/letöltés (0).png" height="500px" alt="">
+            <div class="view360">
+                <img src="képek/ModelS/letöltés (0).png" alt="">
                 <div class="slider">
-                    <div class="handle"></div>
+                    <div class="handle" style="left: 0"></div>
                 </div>
             </div>
         </div>
-        <div id="3">
+        <div id="3" class="car">
             <h1>Tesla Model 3</h1>
-            <div class="360view">
-                <img src="képek/ModelS/letöltés (0).png" height="500px" alt="">
-                <div class="slider">
-                    <div class="handle"></div>
-                </div>
-            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum vitae cum quisquam ullam minus nam obcaecati eius magni error quas officia, iste necessitatibus dignissimos nobis tenetur totam natus quasi ipsum.</p>
         </div>
-        <div id="X">
+        <div id="X" class="car">
             <h1>Tesla Model X</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
         </div>
-        <div id="Y">
+        <div id="Y" class="car">
             <h1>Tesla Model Y</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
         </div>
@@ -74,18 +69,24 @@
 
 <style>
     .slider .handle {
-        background-color: green; 
+        background-color: rgb(120, 120, 120); 
         width: 20px; 
         height: 20px; 
         position: absolute; 
-        left: 0;
-        bottom:50%; 
-        transform: translateY(50%);
+        bottom: 50%; 
+        translate: 0 50%;
         border-radius: 50%;
+        transition: .1s all linear;
+    }
+    .slider .handle:hover,
+    .slider .handle:active,
+    .slider .handle:focus {
+        background-color: rgb(160, 160, 160);
+        transform: scale(120%);
     }
 
     .slider{
-        background-color: red; 
+        background-color: rgba(70, 70, 70, 0.3); 
         width: 500px; 
         height: 5px; 
         margin: 0 auto; 
@@ -129,10 +130,19 @@
         text-decoration: none;
     }
 
-    .cnt>div{
+    .car{
         height: 100vh;
         text-align: center;
         padding-top: 50px;
+    }
+    
+    .car h1{
+        margin-bottom: 50px;
+    }
+    
+    .view360 img{
+        height: 500px;
+        clip-path: inset(50px 10px 50px 10px round 20px);
     }
     
 </style>
@@ -163,19 +173,11 @@
         const handles = document.querySelectorAll(".handle");
 
         var target = null;
-        var rot = 1250;
 
         handles.forEach(handle => {
             handle.addEventListener("mousedown", (e)=>{
                 target = e.target;
             }); 
-            var interval = setInterval(() => {
-                RotateTesla(rot, handle);
-                rot -= 10;
-                if(rot <= 700) {
-                    clearInterval(interval);
-                }
-            }, 30);
         });
 
         window.addEventListener("mousemove", (e) => {
@@ -185,7 +187,7 @@
         });
 
         window.addEventListener("mouseup", ()=>{
-            target = null;
+            target = null;  
         });
     }
 
