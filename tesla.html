@@ -46,11 +46,19 @@
             <h1>Tesla Model S</h1>
             <div class="360view">
                 <img src="képek/ModelS/letöltés (0).png" height="500px" alt="">
+                <div class="slider">
+                    <div class="handle"></div>
+                </div>
             </div>
         </div>
         <div id="3">
             <h1>Tesla Model 3</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
+            <div class="360view">
+                <img src="képek/ModelS/letöltés (0).png" height="500px" alt="">
+                <div class="slider">
+                    <div class="handle"></div>
+                </div>
+            </div>
         </div>
         <div id="X">
             <h1>Tesla Model X</h1>
@@ -65,6 +73,27 @@
 </html>
 
 <style>
+    .slider .handle {
+        background-color: green; 
+        width: 20px; 
+        height: 20px; 
+        position: absolute; 
+        left: 0;
+        bottom:50%; 
+        transform: translateY(50%);
+        border-radius: 50%;
+    }
+
+    .slider{
+        background-color: red; 
+        width: 500px; 
+        height: 5px; 
+        margin: 0 auto; 
+        position: relative; 
+        margin-top: 20px;
+        border-radius: 50px;
+    }
+    
     html{
         scroll-behavior: smooth;
     }
@@ -76,13 +105,12 @@
         transform: translate("-50% -50%");
         list-style-type: disc;
         padding-left: 30px;
-        transition: .2s linear all;
     }
 
     .quickNav li{
         color: rgb(111, 111, 111);
         font-size: 1em;
-        transition: all .2s ease-in-out;
+        transition: all .2s linear;
         margin-bottom: 4px;
     }
 
@@ -101,7 +129,7 @@
         text-decoration: none;
     }
 
-    .cnt div{
+    .cnt>div{
         height: 100vh;
         text-align: center;
         padding-top: 50px;
@@ -110,20 +138,72 @@
 </style>
 
 <script defer>
-    const contentChild = document.querySelectorAll(".cnt div");
-    const navElements = document.querySelectorAll(".quickNav li");
+    const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
-    addEventListener("scroll", (e)=>{
-        for(let i = 0; i < contentChild.length; i++){
-            var height = contentChild[i].offsetHeight;
-            var scroll = window.scrollY;
+    function quickNav(){
+        const contentChild = document.querySelectorAll(".cnt div");
+        const navElements = document.querySelectorAll(".quickNav li");
 
-            var current = Math.floor(scroll/height);
+        addEventListener("scroll", (e)=>{
+            for(let i = 0; i < contentChild.length; i++){
+                var height = contentChild[i].offsetHeight;
+                var scroll = window.scrollY;
 
-            for(let j = 0; j < navElements.length; j++){  
-                if (j == current) navElements[j].setAttribute("aria-label", "selected");
-                else navElements[j].removeAttribute("aria-label");
+                var current = Math.floor(scroll/height);
+
+                for(let j = 0; j < navElements.length; j++){  
+                    if (j == current) navElements[j].setAttribute("aria-label", "selected");
+                    else navElements[j].removeAttribute("aria-label");
+                }
             }
-        }
-    });
+        });
+    }
+
+    function Rotate360(){
+        const handles = document.querySelectorAll(".handle");
+
+        var target = null;
+        var rot = 1250;
+
+        handles.forEach(handle => {
+            handle.addEventListener("mousedown", (e)=>{
+                target = e.target;
+            }); 
+            var interval = setInterval(() => {
+                RotateTesla(rot, handle);
+                rot -= 10;
+                if(rot <= 700) {
+                    clearInterval(interval);
+                }
+            }, 30);
+        });
+
+        window.addEventListener("mousemove", (e) => {
+            if(target == null){ return; }
+
+            RotateTesla(e.clientX, target);
+        });
+
+        window.addEventListener("mouseup", ()=>{
+            target = null;
+        });
+    }
+
+
+    function RotateTesla(cursorX, handle){
+        var midHandle = handle.offsetWidth/2;
+        var newPos = (cursorX - handle.parentElement.offsetLeft - midHandle);
+        var picNum = 50;
+        
+        newPos = clamp(newPos, 0, handle.parentElement.offsetWidth - midHandle);
+        
+        var divider = handle.parentElement.offsetWidth / picNum;
+        var snappedPos = Math.round(newPos / divider) * divider;
+        
+        var currentPic = snappedPos / divider;
+        
+        handle.style.left = snappedPos + "px";
+        handle.parentElement.previousElementSibling.src = "képek/ModelS/letöltés (" + currentPic + ").png";
+    }
+
 </script>
