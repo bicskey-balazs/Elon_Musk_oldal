@@ -20,46 +20,43 @@
 
     <ul class="quickNav">
         <li aria-label="selected">
-            <a href="#S" class="noselect">
-                Model S
-            </a>
+            <a href="#S" class="noselect">Model S</a>
         </li>
         <li>
-            <a href="#3" class="noselect">
-                Model 3
-            </a>
+            <a href="#3" class="noselect">Model 3</a>
         </li>
         <li>
-            <a href="#X" class="noselect">
-                Model X
-            </a>
+            <a href="#X" class="noselect">Model X</a>
         </li>
         <li>
-            <a href="#Y" class="noselect">
-                Model Y
-            </a>
+            <a href="#Y" class="noselect">Model Y</a>
         </li>
     </ul> 
 
     <div class="cnt">
-        <div id="S" class="car">
+        <div id="S" class="car noselect">
             <h1>Tesla Model S</h1>
             <div class="view360">
-                <img src="képek/ModelS/letöltés (0).png" alt="">
+                <img src="képek/ModelS/0.png" alt="">
                 <div class="slider">
                     <div class="handle" style="left: 0"></div>
                 </div>
             </div>
         </div>
-        <div id="3" class="car">
+        <div id="3" class="car noselect">
             <h1>Tesla Model 3</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum vitae cum quisquam ullam minus nam obcaecati eius magni error quas officia, iste necessitatibus dignissimos nobis tenetur totam natus quasi ipsum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit iure rem facilis, natus voluptatibus ullam pariatur odio consequatur labore porro a voluptate, fugit delectus. Facilis vitae expedita minima suscipit officiis.</p>
         </div>
-        <div id="X" class="car">
+        <div id="X" class="car noselect">
             <h1>Tesla Model X</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
+            <div class="view360">
+                <img src="képek/ModelX/letöltés (0).png" alt="">
+                <div class="slider">
+                    <div class="handle" style="left: 0"></div>
+                </div>
+            </div>
         </div>
-        <div id="Y" class="car">
+        <div id="Y" class="car noselect">
             <h1>Tesla Model Y</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
         </div>
@@ -76,7 +73,11 @@
         bottom: 50%; 
         translate: 0 50%;
         border-radius: 50%;
-        transition: .1s all linear;
+        transform: scale(100%);
+        transition:
+         transform .2s ease-in-out,
+         background-color .2s ease-in-out;
+        cursor: e-resize;
     }
     .slider .handle:hover,
     .slider .handle:active,
@@ -106,6 +107,7 @@
         transform: translate("-50% -50%");
         list-style-type: disc;
         padding-left: 30px;
+        z-index: 999;
     }
 
     .quickNav li{
@@ -192,20 +194,24 @@
     }
 
 
-    function RotateTesla(cursorX, handle, model){
-        var midHandle = handle.offsetWidth/2;
-        var newPos = (cursorX - handle.parentElement.offsetLeft - midHandle);
+    function RotateTesla(cursorX, handle){
+        var slider = handle.parentElement;
+        var image = slider.previousElementSibling;
+        var model = handle.parentElement.parentElement.parentElement.id;
         var picNum = 50;
+
+        let midHandle = handle.offsetWidth/2;
+        let newPos = (cursorX - slider.offsetLeft - midHandle);
         
-        newPos = clamp(newPos, 0, handle.parentElement.offsetWidth - midHandle);
+        newPos = clamp(newPos, 0, slider.offsetWidth - midHandle);
         
-        var divider = handle.parentElement.offsetWidth / picNum;
-        var snappedPos = Math.round(newPos / divider) * divider;
+        let divider = slider.offsetWidth / picNum;
+        let snappedPos = Math.round(newPos / divider) * divider;
         
-        var currentPic = snappedPos / divider;
+        let currentPic = snappedPos / divider;
         
         handle.style.left = snappedPos + "px";
-        handle.parentElement.previousElementSibling.src = "képek/ModelS/letöltés (" + currentPic + ").png";
+        image.src = "képek/Model"+ model +"/"+ currentPic + ".png";
     }
 
     quickNav();
