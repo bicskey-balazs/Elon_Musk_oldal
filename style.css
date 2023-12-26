@@ -191,3 +191,48 @@ a::after{
 .lathatatlan{
     background-color: #212121;
 }
+
+#urHatter{
+    margin: 50px auto;
+    background-color: black;
+    width: 600px;
+    height: 600px;
+    background-image: url(képek/csillagok8.gif);
+}
+
+.spacexCim{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.urhajoResz1{
+    position: absolute;
+    left: 562px;
+    bottom: 0;
+}
+
+.urhajoResz2{
+    position: absolute;
+    left: 600px;
+    bottom: 0;
+}
+
+.urhajoResz3{
+    opacity: 10%;
+    position: absolute;
+    transform: scaleY(200%);
+    left: 640px;
+    bottom: 0;
+}
+
+.urhajo{
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.urhajo_tuz{
+    max-width: 50%;
+    max-height: 50%;
+    transform: rotate(180deg);
+    transform: scaleY(200%);
+}
