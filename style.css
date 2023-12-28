@@ -197,7 +197,7 @@ a::after{
     background-color: black;
     width: 600px;
     height: 600px;
-    background-image: url(képek/csillagok8.gif);
+    /* background-image: url(képek/csillagok8.gif); */
 }
 
 .spacexCim{
@@ -208,13 +208,13 @@ a::after{
 .urhajoResz1{
     position: absolute;
     left: 562px;
-    bottom: 0;
+    bottom: 100px;
 }
 
 .urhajoResz2{
     position: absolute;
     left: 600px;
-    bottom: 0;
+    bottom: 100px;
 }
 
 .urhajoResz3{
@@ -222,7 +222,7 @@ a::after{
     position: absolute;
     transform: scaleY(200%);
     left: 640px;
-    bottom: 0;
+    bottom: 100px;
 }
 
 .urhajo{
@@ -235,4 +235,132 @@ a::after{
     max-height: 50%;
     transform: rotate(180deg);
     transform: scaleY(200%);
+}
+
+.meteor1, .meteor2, .meteor3{
+    position: absolute;
+    transform: scale(50%);
+    top: 0;
+}
+
+.boost{
+    transform: scale(40%);
+    position: absolute;
+    top: 0;
+}
+
+.kmSzamlalo{
+    float: left;
+}
+
+.kmCel{
+    float: right;
+}
+
+.startGomb{
+    position: absolute;
+    left: 41%;
+    top: 75%;
+    width: 250px;
+    font-weight: bold;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: white;
+    background-color: black;
+}
+
+.tipp{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 25%;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: white;
+    background-color: black;
+}
+
+.nyilakTipp{
+    left: 37%;
+}
+
+.meteorTipp{
+    left: 47%
+}
+
+.boostTipp{
+    left: 57%
+}
+
+.tippSzoveg{
+    position: absolute;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    top: 40%;
+    width: 100px;
+}
+
+.tippSzoveg1{
+    left: 37%;
+}
+
+.tippSzoveg2{
+    left: 47%;
+}
+
+.tippSzoveg3{
+    left: 57%;
+}
+
+.bvSzoveg{
+    position: absolute;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    top: 40%;
+    left: 43%;
+}
+
+.hold{
+    left: 37%;
+    top: 60%;
+}
+
+.mars{
+    left: 57%;
+    top: 60%;
+}
+
+.holdGomb{
+    position: absolute;
+    left: 33%;
+    top: 75%;
+    width: 220px;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: white;
+    background-color: black;
+}
+
+.marsGomb{
+    position: absolute;
+    left: 52%;
+    top: 75%;
+    width: 250px;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: white;
+    background-color: black;
 }
