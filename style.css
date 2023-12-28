@@ -243,6 +243,12 @@ a::after{
     top: 0;
 }
 
+.boost{
+    transform: scale(40%);
+    position: absolute;
+    top: 0;
+}
+
 .kmSzamlalo{
     float: left;
 }
@@ -308,4 +314,53 @@ a::after{
 
 .tippSzoveg3{
     left: 57%;
+}
+
+.bvSzoveg{
+    position: absolute;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    top: 40%;
+    left: 43%;
+}
+
+.hold{
+    left: 37%;
+    top: 60%;
+}
+
+.mars{
+    left: 57%;
+    top: 60%;
+}
+
+.holdGomb{
+    position: absolute;
+    left: 33%;
+    top: 75%;
+    width: 220px;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: white;
+    background-color: black;
+}
+
+.marsGomb{
+    position: absolute;
+    left: 52%;
+    top: 75%;
+    width: 250px;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: white;
+    background-color: black;
 }
