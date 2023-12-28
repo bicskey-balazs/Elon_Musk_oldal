@@ -63,7 +63,12 @@
         </div>
         <div id="Y" class="car noselect">
             <h1>Tesla Model Y</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos fugit voluptatum odit autem obcaecati beatae dicta optio expedita, laudantium aliquid minus alias est consequatur fuga vero similique totam. Sunt, commodi!</p>
+            <div class="view360">
+                <img src="képek/ModelY/0.png" alt="">
+                <div class="slider">
+                    <div class="handle" style="left: 0"></div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -83,6 +88,7 @@
          transform .2s ease-in-out,
          background-color .2s ease-in-out;
         cursor: e-resize;
+        left: calc(50/44) + "px";
     }
     .slider .handle:hover,
     .slider .handle:active,
@@ -218,7 +224,7 @@
         handle.style.left = snappedPos + "px";
         image.src = "képek/Model"+ model +"/"+ currentPic + ".png";
     }
-
+    
     quickNav();
     Rotate360();
 
