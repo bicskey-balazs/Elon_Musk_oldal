@@ -34,42 +34,54 @@
     </ul> 
 
     <div class="cnt">
-        <div id="S" class="car noselect">
+        <section id="S" class="car noselect">
             <h1>Tesla Model S</h1>
             <div class="view360">
                 <img src="képek/ModelS/0.png" alt="">
                 <div class="slider">
-                    <div class="handle" style="left: 0"></div>
+                    <div class="handle" style="left: 0;">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="3" class="car noselect">
+        </section>
+        <section id="3" class="car noselect">
             <h1>Tesla Model 3</h1>
             <div class="view360">
                 <img src="képek/Model3/0.png" alt="">
                 <div class="slider">
-                    <div class="handle" style="left: 0"></div>
+                    <div class="handle" style="left: 0">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="X" class="car noselect">
+        </section>
+        <section id="X" class="car noselect">
             <h1>Tesla Model X</h1>
             <div class="view360">
                 <img src="képek/ModelX/0.png" alt="">
                 <div class="slider">
-                    <div class="handle" style="left: 0"></div>
+                    <div class="handle" style="left: 0">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="Y" class="car noselect">
+        </section>
+        <section id="Y" class="car noselect">
             <h1>Tesla Model Y</h1>
             <div class="view360">
                 <img src="képek/ModelY/0.png" alt="">
                 <div class="slider">
-                    <div class="handle" style="left: 0"></div>
+                    <div class="handle" style="left: 0">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </body>
 </html>
@@ -77,24 +89,35 @@
 <style>
     .slider .handle {
         background-color: rgb(120, 120, 120); 
-        width: 20px; 
-        height: 20px; 
+        width: 50px; 
+        height: 20px;
         position: absolute; 
         bottom: 50%; 
         translate: 0 50%;
-        border-radius: 50%;
+        border-radius: 50px;
         transform: scale(100%);
         transition:
          transform .2s ease-in-out,
          background-color .2s ease-in-out;
         cursor: e-resize;
         left: calc(50/44) + "px";
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
+
     .slider .handle:hover,
     .slider .handle:active,
     .slider .handle:focus {
         background-color: rgb(160, 160, 160);
         transform: scale(120%);
+    }
+
+    .slider .handle i{
+        margin: 0 10px;
+        color: rgb(244, 244, 244);
+        font-size: 1.2rem;
+        font-weight: 800;
     }
 
     .slider{
@@ -105,10 +128,6 @@
         position: relative; 
         margin-top: 20px;
         border-radius: 50px;
-    }
-    
-    html{
-        scroll-behavior: smooth;
     }
     
     .quickNav{
@@ -123,14 +142,14 @@
 
     .quickNav li{
         color: rgb(111, 111, 111);
-        font-size: 1em;
+        font-size: 1.1rem;
         transition: all .2s linear;
         margin-bottom: 4px;
     }
 
     .quickNav li[aria-label="selected"]{
         color: rgb(244, 244, 244);
-        font-size: 1.2em;
+        font-size: 1.3rem;
     }
 
     .quickNav li:hover{
@@ -143,34 +162,44 @@
         text-decoration: none;
     }
 
+    .car h1{
+        margin: 50px 0 50px 0;
+        font-size: 2rem;
+        text-shadow: 3px 3px 0px rgb(88, 88, 88);
+    }
+
+    .cnt{
+        height: 100vh;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+
     .car{
+        scroll-snap-align: start;
         height: 100vh;
         text-align: center;
         padding-top: 50px;
     }
-    
-    .car h1{
-        margin-bottom: 50px;
-    }
-    
+
     .view360 img{
         height: 500px;
         clip-path: inset(50px 10px 50px 10px round 20px);
     }
-    
 </style>
 
 <script defer>
     const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
     function quickNav(){
-        const contentChild = document.querySelectorAll(".cnt div");
+        const contentWindow = document.querySelector(".cnt");
+        const contentChild = document.querySelectorAll(".cnt section");
         const navElements = document.querySelectorAll(".quickNav li");
 
-        addEventListener("scroll", (e)=>{
+        contentWindow.addEventListener("scroll", (e)=>{
             for(let i = 0; i < contentChild.length; i++){
                 var height = contentChild[i].offsetHeight;
-                var scroll = window.scrollY;
+                var scroll = contentWindow.scrollTop;
 
                 var current = Math.floor(scroll/height);
 
