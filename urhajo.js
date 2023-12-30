@@ -85,7 +85,7 @@ let meteorSeged = [false, false, false];
 let aktMeteor = 0;
 
 meteorok.forEach(m => {
-    m.style.top = "0";
+    m.style.bottom = "0";
     m.style.left = "0";
     m.style.display = "none";
 });

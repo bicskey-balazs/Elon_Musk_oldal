@@ -239,7 +239,7 @@ a::after{
 }
 
 #urHatter{
-    margin: 50px auto;
+    margin: 0 auto;
     background-color: black;
     width: 600px;
     height: 600px;
@@ -259,13 +259,13 @@ a::after{
 .urhajoResz1{
     position: absolute;
     left: 562px;
-    bottom: 100px;
+    bottom: 150px;
 }
 
 .urhajoResz2{
     position: absolute;
     left: 600px;
-    bottom: 100px;
+    bottom: 150px;
 }
 
 .urhajoResz3{
@@ -273,7 +273,7 @@ a::after{
     position: absolute;
     transform: scaleY(200%);
     left: 640px;
-    bottom: 100px;
+    bottom: 150px;
 }
 
 .urhajo{
@@ -310,8 +310,8 @@ a::after{
 
 .startGomb{
     position: absolute;
-    left: 41%;
-    top: 75%;
+    left: 615px;
+    top: 450px;
     width: 250px;
     font-weight: bold;
     color: white;
@@ -327,7 +327,7 @@ a::after{
     height: 100px;
     width: 100px;
     position: absolute;
-    top: 25%;
+    top: 100px;
     border-style: solid;
     border-radius: 50px;
     border-color: white;
@@ -335,15 +335,15 @@ a::after{
 }
 
 .nyilakTipp{
-    left: 37%;
+    left: 550px;
 }
 
 .meteorTipp{
-    left: 47%
+    left: 700px;
 }
 
 .boostTipp{
-    left: 57%
+    left: 850px;
 }
 
 .tippSzoveg{
@@ -351,20 +351,20 @@ a::after{
     font-weight: bold;
     color: white;
     font-size: 25px;
-    top: 40%;
+    top: 200px;
     width: 100px;
 }
 
 .tippSzoveg1{
-    left: 37%;
+    left: 550px;
 }
 
 .tippSzoveg2{
-    left: 47%;
+    left: 700px;
 }
 
 .tippSzoveg3{
-    left: 57%;
+    left: 850px;
 }
 
 .bvSzoveg{
@@ -372,24 +372,24 @@ a::after{
     font-weight: bold;
     color: white;
     font-size: 25px;
-    top: 40%;
-    left: 43%;
+    top: 100px;
+    left: 650px;
 }
 
 .hold{
-    left: 37%;
-    top: 60%;
+    left: 550px;
+    top: 250px;
 }
 
 .mars{
-    left: 57%;
-    top: 60%;
+    left: 850px;
+    top: 250px;
 }
 
 .holdGomb{
     position: absolute;
-    left: 33%;
-    top: 75%;
+    left: 490px;
+    top: 380px;
     width: 220px;
     font-weight: bold;
     color: white;
@@ -403,8 +403,8 @@ a::after{
 
 .marsGomb{
     position: absolute;
-    left: 52%;
-    top: 75%;
+    left: 775px;
+    top: 380px;
     width: 250px;
     font-weight: bold;
     color: white;
