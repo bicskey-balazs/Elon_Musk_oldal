@@ -4,17 +4,30 @@ let kmCelKiiras = document.querySelector('.kmCel');
 function delay(mennyi) {
     return new Promise(resolve => setTimeout(resolve, mennyi));
 }
-let sebesség = 1500;
+let holdVmars = 0;
+let sebesseg = 2000;
 let jatekvege = false;
 let aktKM = 0;
 let kmCel = 384000;
 async function kmSzamlalo(cel) {
     while (!jatekvege) {
-        if(aktKM == cel) {
-            jatekvege = true
+        if(aktKM >= cel) {
+            aktKM = 0;
+            boost.style.display = "none";
+            document.querySelector('#urhajo').style.display = "none";
+            kmKiiras.style.display = "none";
+            meteorok.forEach(m => {
+                m.style.display = "none";
+            });
+            kmCelKiiras.style.display = "none";
+            hatter.style.backgroundImage = "";
+            if (holdVmars == 0) document.querySelector('.holdVege').style.display = "inline";
+            else document.querySelector('.marsVege').style.display = "inline";
+            document.querySelector('.jatekVegeGomb').style.display = "inline";
+            jatekvege = true;
         }
         await delay(1000);
-        aktKM += sebesség;
+        aktKM += sebesseg;
         kmKiiras.innerHTML = `km: ${aktKM}`
     }
 }
@@ -78,19 +91,24 @@ meteorok.forEach(m => {
 });
 
 async function meteorCsinal() {
-    rnd = Math.floor(Math.random() * 495) + 350;
-    meteorok[aktMeteor].style.top = "0";
-    meteorok[aktMeteor].style.left = `${rnd}px`;
-    meteorok[aktMeteor].style.display = "inline";
-    meteorSeged[aktMeteor] = true;
-    meteorMozgas(aktMeteor);
-    if(aktMeteor != 2) aktMeteor++;
-    else aktMeteor = 0;
+    if(!jatekvege) {
+        rnd = Math.floor(Math.random() * 495) + 350;
+        meteorok[aktMeteor].style.top = "0";
+        meteorok[aktMeteor].style.left = `${rnd}px`;
+        meteorok[aktMeteor].style.display = "inline";
+        meteorSeged[aktMeteor] = true;
+        meteorMozgas(aktMeteor);
+        if(aktMeteor != 2) aktMeteor++;
+        else aktMeteor = 0;
+    }
 }
 
 async function meteorMozgas(melyik) {
     while(meteorSeged[melyik]) {
         await delay(10);
+        if(parseInt(meteorok[melyik].style.top) < 520 && parseInt(meteorok[melyik].style.top) > 320) {
+            utkozes(melyik);
+        }
         if(parseInt(meteorok[melyik].style.top) < 580) {
             meteorok[melyik].style.top = `${parseInt(meteorok[melyik].style.top) + 3}px`
         }
@@ -108,6 +126,7 @@ boost.style.display = "none";
 boost.style.top = "0";
 let boostSeged = 0;
 let boostSeged2 = true;
+let boostSeged3 = true;
 async function boostCsinal() {
     if (boostSeged == 3 && boostSeged2) {
         boostSeged2 = false
@@ -118,6 +137,9 @@ async function boostCsinal() {
 
         while(boostSeged != 0) {
             await delay(10);
+            if(parseInt(boost.style.top) < 560 && parseInt(boost.style.top) > 360) {
+                utkozesBoost();
+            }
             if(parseInt(boost.style.top) < 650) {
                 boost.style.top = `${parseInt(boost.style.top) + 3}px`
             }
@@ -131,9 +153,42 @@ async function boostCsinal() {
     }
     else boostSeged++;
 }
-
+//
+// ütközés
+document.querySelector('.jatekVege').style.display = "none";
+document.querySelector('.jatekVegeGomb').style.display = "none";
+document.querySelector('.jatekVegeGomb').addEventListener("mouseup", bolygoValasztas)
+function utkozes(melyik) {
+    if(Math.abs(parseInt(meteorok[melyik].style.left) - parseInt(urhajo[0].style.left)) < 50) {
+        jatekvege = true;
+        boost.style.display = "none";
+        document.querySelector('#urhajo').style.display = "none";
+        kmKiiras.style.display = "none";
+        meteorok.forEach(m => {
+            m.style.display = "none";
+        });
+        kmCelKiiras.style.display = "none";
+        hatter.style.backgroundImage = "";
+        document.querySelector('.jatekVege').style.display = "inline";
+        document.querySelector('.jatekVegeGomb').style.display = "inline";
+    }
+}
+async function utkozesBoost() {
+    if(Math.abs(parseInt(boost.style.left) - parseInt(urhajo[0].style.left)) < 35 && boostSeged3) {
+        boostSeged3 = false;
+        boost.style.display = "none";
+        sebesseg = sebesseg * 5;
+        kmKiiras.style.color = "skyblue";
+        await delay(4000);
+        sebesseg = sebesseg / 5;
+        kmKiiras.style.color = "white";
+        boostSeged3 = true;
+    }
+}
 //
 //játék
+document.querySelector('.holdVege').style.display = "none";
+document.querySelector('.marsVege').style.display = "none";
 let holdGomb = document.querySelector('.holdGomb');
 let marsGomb = document.querySelector('.marsGomb');
 holdGomb.addEventListener("mouseup", jatekHold);
@@ -149,14 +204,21 @@ kmCelKiiras.style.display = "none";
 
 document.querySelector('.bolygoValasztas').style.display = "none";
 function bolygoValasztas() {
+    document.querySelector('.holdVege').style.display = "none";
+    document.querySelector('.marsVege').style.display = "none";
+    document.querySelector('.jatekVege').style.display = "none";
+    document.querySelector('.jatekVegeGomb').style.display = "none";
     startGomb.style.display = "none";
     document.querySelector('.tippek').style.display = "none";
     document.querySelector('.bolygoValasztas').style.display = "inline";
 }
 
 async function jatekHold() {
-    sebesség = 1500
-    kmCel = 384000
+    holdVmars = 0;
+    aktKM = 0;
+    jatekvege = false;
+    sebesseg = 2000;
+    kmCel = 384000;
     kmCelKiiras.innerHTML = `Cél: ${kmCel}km`;
     hatter.style.backgroundImage = "url(képek/csillagok8.gif)";
     startGomb.style.display = "none";
@@ -165,7 +227,7 @@ async function jatekHold() {
     document.querySelector('#urhajo').style.display = "inline";
     kmKiiras.style.display = "inline";
     kmCelKiiras.style.display = "inline";
-    kmSzamlalo();
+    kmSzamlalo(kmCel);
     while(!jatekvege) {
         await delay(1200);
         boostCsinal();
@@ -174,7 +236,10 @@ async function jatekHold() {
 }
 
 async function jatekMars() {
-    sebesség = 250000
+    holdVmars = 1;
+    aktKM = 0;
+    jatekvege = false;
+    sebesseg = 50000;
     kmCel = 100;
     kmCelKiiras.innerHTML = `Cél: ${kmCel}millió km`;
     hatter.style.backgroundImage = "url(képek/csillagok8.gif)";
@@ -184,7 +249,7 @@ async function jatekMars() {
     document.querySelector('#urhajo').style.display = "inline";
     kmKiiras.style.display = "inline";
     kmCelKiiras.style.display = "inline";
-    kmSzamlalo();
+    kmSzamlalo(kmCel*100000);
     while(!jatekvege) {
         await delay(1200);
         boostCsinal();

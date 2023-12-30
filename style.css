@@ -201,8 +201,13 @@ a::after{
 }
 
 .spacexCim{
+    font-size: 50px;
+    font-weight: bolder;
+    text-decoration: underline;
+    top: 85px;
+    left: 670px;
+    position: absolute;
     text-align: center;
-    padding-top: 50px;
 }
 
 .urhajoResz1{
@@ -363,4 +368,79 @@ a::after{
     border-radius: 50px;
     border-color: white;
     background-color: black;
+}
+
+.teszt{
+    position: absolute;
+    transform: scale(40%);
+    left: 400px;
+    top: 360px;
+}
+
+.jatekVege{
+    position: absolute;
+    font-weight: bold;
+    color: white;
+    font-size: 50px;
+    left: 41.5%;
+    top: 40%;
+    width: 100px;
+}
+
+.jatekVegeGomb{
+    position: absolute;
+    left: 42%;
+    top: 75%;
+    width: 220px;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: white;
+    background-color: black;
+}
+
+.hold2{
+    left: 46%;
+    top: 60%;
+}
+
+.bvSzoveg2{
+    position: absolute;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    top: 40%;
+    left: 42%;
+}
+
+.ussf52{
+    margin-left: 50px;
+    margin-top: 50px;
+    text-decoration: underline #333 5px;
+}
+
+.starlinkMission{
+    right: 110px;
+    top: 100px;
+    position: absolute;
+    text-decoration: underline #333 5px;
+}
+
+.ussf52Szoveg{
+    position: absolute;
+    font-size: 20px;
+    width: 300px;
+    top: 150px;
+    left: 50px;
+}
+
+.smSzoveg{
+    position: absolute;
+    font-size: 20px;
+    width: 300px;
+    top: 150px;
+    right: 50px;
 }
