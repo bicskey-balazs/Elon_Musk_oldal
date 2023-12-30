@@ -169,7 +169,7 @@ a::after{
 .ctestGrid{
     width: 800px;
     height: 500px;
-    margin: 0 auto;
+    margin: 60px auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -180,6 +180,7 @@ a::after{
     width: 100px;
     height: 100px;
     background-color: white;
+    border-radius: 5px;
     border: 2px solid black;
     color: black;
 }
@@ -187,20 +188,49 @@ a::after{
 .ctestSzam {
     background-color: skyblue;
     text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-size: 25px;
+    font-weight: bolder;
+    padding: 30px;
 }
 
 .pontSzam {
     text-align: center;
+    font-size: 25px;
 }
 
 .startGame{
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     height: 50px;
     background-color: #8f8f8f;
     width: 100px;
     margin: 0 auto;
     display: block;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+.ctesztElott{
+    background-color: black;
+    width: 800px;
+    height: 500px;
+    margin: 60px auto;
+    font-size: 25px;
+}
+
+.ctesztElottSz{
+    padding: 220px;
+    color: white;
+    text-decoration: underline #6f6f6f;
+}
+
+.ctesztElottSz2{
+    position: absolute;
+    left: 550px;
+    top: 280px;
+    font-size: 25px;
 }
 
 .lathatatlan{

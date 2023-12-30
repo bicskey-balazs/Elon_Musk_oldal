@@ -1,5 +1,7 @@
 // csimpánz teszt
 let ctestGrid = document.querySelector(".ctestGrid");
+document.querySelector(".ctesztElott").style.display = "flex"
+ctestGrid.style.display = "none";
 let squareIndex = 0;
 let szamDb = 3;
 let melyikSzam = 1;
@@ -106,6 +108,9 @@ function general() {
 }
 
 startGame.addEventListener("mouseup", () => {
+    document.querySelector('.pontSzam').textContent = "Pontszám:0 Hibák:0";
+    ctestGrid.style.display = "flex";
+    document.querySelector(".ctesztElott").style.display = "none";
     general();
     startGame.style.display = "none";
 });
